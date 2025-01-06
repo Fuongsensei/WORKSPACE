@@ -172,22 +172,16 @@ font-weight:bolder;
     font-size: 24px;
     font-weight:400;
 }
-.box {
-    width: 100px;
-    height: 100px;
-    background: red;
-    transform: translateZ(50px); /* Đẩy phần tử ra khỏi màn hình */
-    perspective: 1000px; /* Tạo góc nhìn 3D */
-}
+
 .content-section
 {
 
     margin-left: auto;
     margin-right: auto;
-    min-height: 600px;
+    
     padding: 64px 16px;
-    width: 800px;
-
+    width: 768px;
+   
 }
 
 .content-heading
@@ -217,3 +211,106 @@ font-weight:bolder;
 {
     background-color: #fff;
 }
+.member-list
+{
+    width: 768px;
+    height: 287px;
+    padding: 32px 0px;
+}
+.member-item
+{
+float: left;
+width: 256px;
+height: 223px;
+font-size: 15px;
+text-align: center;
+
+}
+.member-name
+{
+margin: 16px 0;
+}
+.member-img
+{
+width: 154px;
+height: 154px;
+border-radius: 5px;
+}
+
+.tour-section
+{
+width: 100%;
+background-color: black;
+color: white;
+
+}
+
+.tour-list
+{
+margin-left: auto;
+margin-right: auto;
+width: 800px;
+padding: 64px 16px;
+}
+
+.tour-list .content-heading
+{
+    margin: 10px 0px;
+}
+.tour-list .logo-heading
+    {
+        margin: 15px 0px;
+    }
+
+.list-ticket 
+{
+width: 100%;
+
+}
+.list-ticket 
+{
+    background-color: #fff;
+    list-style-type: none;
+    font-size: 15px;
+    color: rgba(0, 0, 0, .5);
+    padding:8px 16px;
+    border-bottom: solid 1px #ddd;
+    
+}
+.sold-out
+{
+
+}
+.tour-place
+{
+
+}
+.tour-place-item
+{
+
+}
+.place-img
+{
+
+}
+.tour-description
+{
+
+}
+.tour-heading
+{
+
+}
+.tour-date
+{
+
+}
+.tour-location
+{
+
+}
+.tour-btn
+{
+
+}
+
