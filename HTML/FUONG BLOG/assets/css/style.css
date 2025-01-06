@@ -1,0 +1,219 @@
+/* Reset css */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+
+    font-family: "Roboto";
+    
+}
+
+#main
+{
+
+  
+}
+
+#header
+{
+   background-color: black; 
+   height: 46px;
+   position:fixed;
+   width: 100%;
+   top:0;
+z-index: 1;
+
+}
+
+#slider
+{
+background:url('/HTML/FUONG BLOG/assets/img/slider/ny.jpg') top center /cover no-repeat ;
+padding-top:50%;
+margin-top: 46px;
+position: relative;
+z-index: 0;
+
+
+}
+
+#content
+{
+background-color: #d6d6d6;
+min-height: 1000px;
+}
+
+#footer
+{
+
+}
+
+#nav
+{
+    display:inline-block;
+}
+#nav li
+{
+
+    display: inline-block;
+    position: relative;
+
+}
+
+#nav>li>a
+{
+    color: white;
+    text-transform: uppercase;
+}
+#nav li a 
+{
+text-decoration: none;
+display: block;
+line-height: 46px;
+padding: 0 24px;
+
+}
+
+#nav .subnav 
+{
+    
+    position: absolute;
+    background-color: white;
+    display: none;
+    box-shadow:  0 0 10px rgba(0, 0, 0, 0.4);
+           
+}
+
+
+#nav>li:hover>a,
+#nav .subnav li:hover a
+{
+    color :black;
+    background-color: #d6d6d6;
+    transition: ease-in-out .3s;
+
+   
+}
+
+#nav .subnav a
+{
+    color:black;
+    padding : 0 16px;
+    line-height: 38px;
+}
+
+#nav .subnav li 
+{
+display :block;
+    
+}
+
+#nav li:hover .subnav
+
+{
+display: block;
+}
+#nav .nav-down-icon
+{
+    font-size: 12px;
+}
+
+
+#header .search-btn 
+{
+      
+
+float: right ;
+cursor:pointer;
+
+}
+
+#header .search-icon
+{
+color:white;
+font-size: 14px;
+padding : 0 24px;
+line-height: 46px;
+display:inline-block;
+font-weight:bolder;
+
+
+}
+
+#header .search-btn:hover 
+{
+    background-color: red;
+}
+
+#slider .decs 
+{
+
+   color:white;
+   position:absolute;
+   
+   width: 100%;
+   bottom: 0;
+   text-align: center;
+   padding : 32px 16px;
+   
+}
+#slider .text-decsription
+{
+    font-size: 15px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-weight: 700;
+  
+}
+#slider .text-location
+{
+    font-size: 24px;
+    font-weight:400;
+}
+.box {
+    width: 100px;
+    height: 100px;
+    background: red;
+    transform: translateZ(50px); /* Đẩy phần tử ra khỏi màn hình */
+    perspective: 1000px; /* Tạo góc nhìn 3D */
+}
+.content-section
+{
+
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 600px;
+    padding: 64px 16px;
+    width: 800px;
+
+}
+
+.content-heading
+{
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 4px;
+}
+.logo-heading
+{
+    text-align: center;
+    margin-top:25px;
+    font-style: italic;
+    opacity: 0.65;
+    font-size: 15px;
+ 
+}
+.about
+{
+    margin-top: 25px;
+    text-align: justify;
+    line-height: 1.5;
+    font-size: 15px;
+    letter-spacing: 2%;
+}
+#content
+{
+    background-color: #fff;
+}
