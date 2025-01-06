@@ -285,11 +285,11 @@ top: 220px;
     
 }
 
-/* .get-advice::before
+.get-advice::before
 {
 
-} */
-.get-advice i
+}
+.get-advice i 
 {
     position: absolute;
     line-height: 65px;
