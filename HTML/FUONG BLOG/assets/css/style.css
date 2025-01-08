@@ -30,6 +30,8 @@ html
    position:fixed;
    width: 100%;
    top:0;
+   z-index: 10;
+   
 
 
 }
@@ -98,7 +100,7 @@ padding: 0 24px;
 {
     color :black;
     background-color: #d6d6d6;
-    transition: ease-in-out .3s;
+    transition: ease .2s;
 
    
 }
@@ -272,7 +274,7 @@ padding: 64px 16px;
     background-color: #fff;
     font-size: 15px;
     color: rgba(0, 0, 0, .5);
-    margin-top:40px ;
+    margin-top: 40px ;
     list-style-type: none;
     
 }
@@ -281,6 +283,109 @@ padding: 64px 16px;
 {
   padding :8px 16px;
   border-bottom: solid 1px #ddd;
+  overflow: hidden;
 
 }
 
+.ticket-list .sold-out
+{
+    color: white;
+    background-color: red;
+    margin-left: 16px;
+    padding: 0px 4px;
+    height: 23px;
+    display: inline-block;
+    line-height: 23px;
+}
+
+.ticket-list .number-left-ticket
+{
+background-color: black;
+color: white;
+float: right;
+text-align: center;
+width: 23px;
+height: 22px;
+border-radius: 50%;
+line-height: 22px;
+padding:0px 8px;
+margin-right: 15px;
+
+}
+.tour-place
+{
+
+    width: 800px;
+    padding: 32px 8px;
+    overflow: hidden;
+    margin-left: -16px;
+}
+
+.tour-place .place-img
+{
+   width: 100%;
+   display: block;
+}
+.tour-place .tour-place-item
+{
+    width: 261px;
+    float: left;
+    padding: 0px 8px;
+    font-size: 15px;
+   
+}
+
+.tour-place-item .tour-heading
+{
+    font-size: 15px;
+    margin: 15px 0px;
+    height: 22.5px;
+}
+
+.tour-place-item .tour-description
+{
+    background-color: white;
+    color: black;
+     padding: 0.15px 16px ;
+   
+}
+
+.tour-place-item .tour-date
+{
+    margin: 15px 0px;
+    opacity: 0.5;
+    height: 22.5px;
+}
+
+.tour-place-item .tour-location
+{
+    margin: 15px 0px;
+    height: 45px;
+    
+}
+.tour-place-item .tour-btn
+{
+    background-color: black;
+    text-decoration: none;
+    width: 108px;
+    height: 39px;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    line-height: 39px;
+    margin-bottom: 15px;
+}
+
+
+
+.place-img:hover
+{
+    opacity: 0.5;
+}
+
+.tour-btn:hover
+{
+    background-color: #d6d6d6;
+    color: black;
+
+}
