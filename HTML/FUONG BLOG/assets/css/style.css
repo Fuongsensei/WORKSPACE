@@ -1,15 +1,21 @@
 /* Reset css */
 *{
+
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-
-html{
-
-    font-family: "Roboto";
     
+
+html
+{
+    font-family: "Roboto";
+
 }
+
+    
+    
+
 
 #main
 {
@@ -24,7 +30,7 @@ html{
    position:fixed;
    width: 100%;
    top:0;
-z-index: 1;
+
 
 }
 
@@ -34,7 +40,7 @@ background:url('/HTML/FUONG BLOG/assets/img/slider/ny.jpg') top center /cover no
 padding-top:50%;
 margin-top: 46px;
 position: relative;
-z-index: 0;
+
 
 
 }
@@ -152,7 +158,6 @@ font-weight:bolder;
 
    color:white;
    position:absolute;
-   
    width: 100%;
    bottom: 0;
    text-align: center;
@@ -178,7 +183,6 @@ font-weight:bolder;
 
     margin-left: auto;
     margin-right: auto;
-    
     padding: 64px 16px;
     width: 768px;
    
@@ -262,55 +266,21 @@ padding: 64px 16px;
         margin: 15px 0px;
     }
 
-.list-ticket 
-{
-width: 100%;
 
-}
-.list-ticket 
+.ticket-list 
 {
     background-color: #fff;
-    list-style-type: none;
     font-size: 15px;
     color: rgba(0, 0, 0, .5);
-    padding:8px 16px;
-    border-bottom: solid 1px #ddd;
+    margin-top:40px ;
+    list-style-type: none;
     
 }
-.sold-out
-{
 
-}
-.tour-place
+.ticket-list li
 {
-
-}
-.tour-place-item
-{
-
-}
-.place-img
-{
-
-}
-.tour-description
-{
-
-}
-.tour-heading
-{
-
-}
-.tour-date
-{
-
-}
-.tour-location
-{
-
-}
-.tour-btn
-{
+  padding :8px 16px;
+  border-bottom: solid 1px #ddd;
 
 }
 
