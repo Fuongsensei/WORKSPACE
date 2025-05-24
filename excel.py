@@ -17,14 +17,21 @@ import sys
 from colorama import init, Fore, Back, Style
 done : th.Event = th.Event()
 is_event : th.Event = th.Event()
+
 progress : float = 0
+
 df_list : list  = []
+
 term = Terminal()
+
 day : datetime = datetime.today().replace(hour=6,minute=0,second=0)
 in_day : datetime = day.replace(hour=23,minute=59,second=59)
 night : datetime = (day - timedelta(days=1)).replace(hour=18,minute=0,second=0)
+
 password : str = 'J@bil2022'
+
 current_user : str = getpass.getuser()
+
 init()
 
 
