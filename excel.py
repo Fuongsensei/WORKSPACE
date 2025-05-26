@@ -1,12 +1,13 @@
 #pylint:disable=all
+
 import time
-import pandas as pd
-import psutil 
+import pandas as pd #type ignore
+import psutil #type ignore
 from datetime import date, timedelta
 import io
 from datetime import datetime 
-import xlwings as xw
-import msoffcrypto as ms
+import xlwings as xw #type ignore
+import msoffcrypto as ms  #type ignore
 import os 
 import getpass 
 import shutil
@@ -14,11 +15,12 @@ import threading as th
 import re
 from blessed import Terminal
 import sys
-from colorama import init, Fore, Back, Style
+from colorama import init, Fore, Back, Style#type ignore
+
 done : th.Event = th.Event()
 is_event : th.Event = th.Event()
 
-progress : float = 0
+progress : int = 0
 
 df_list : list  = []
 
@@ -61,25 +63,31 @@ print_authors()
 
 
 def get_des_path(callback) -> str:
-        contain_path : str = r'C:\Users\nguye\Documents\path.txt'
+        contain_path : str = rf'C:\Users\{current_user}\Documents\path.txt'
         is_exists : bool  = os.path.exists(contain_path)
         if is_exists:
                 with open(contain_path,mode='r') as file:
                         path: str = file.read()
                 user_input:str = input(f"Đường dẫn hiện tại là {path} bạn có muốn thay đổi   '[{apply_color('Y')}]/{apply_color("N")}'? :...")
                 print(f'{'\n'*2}')
-                if user_input.upper() == 'Y': return callback()
-                else  :return path
+                if user_input.upper() == 'Y':
+                        os.system('cls')
+                        return callback()
+                else  :
+                        os.system('cls')
+                        return path
 
         else:
                 des_path : str = input(f"Vui lòng copy đường dẫn file {apply_color('Report Scan Verify Shiftly (RCV)')} dán vào đây..: ")
                 with open(contain_path,mode='w+') as file:
                         file.write(des_path)
+                        os.system('cls')
                 return des_path
                 
                 
 def change_des_path() -> str:
         changed_path : str = input("Vui lòng nhập đường dẫn mới :")
+        os.system('cls')
         return changed_path
 
 
@@ -87,10 +95,12 @@ def change_des_path() -> str:
 
 def get_list_sap()-> list :
         user_input : str = input("Vui lòng nhập số SAP cách nhau bằng ký tự trừ số nguyên:....")
+        os.system('cls')
         print(f'{'\n'*2}')
         user_sap : list = [user.strip() for user in re.split(r'[\D]+',user_input)]
         check_input = input(f"Đây là danh sách SAP ---> {apply_color(user_sap)} <--- vui lòng kiểm tra nếu đúng nhấn enter còn nếu sai nhập N để nhập lại...:")
         print(f'{'\n'*2}')
+        os.system('cls')
         if check_input.upper() != "N":   return user_sap
                 
         else:
@@ -101,8 +111,8 @@ def copy_file_from_net(list_sap)->list:
         list_path : list = []
         try:
                 for sap in list_sap:
-                        path : str =rf"D:\Program Files\Download\GR Verification {sap}.xlsx"
-                        path_copy = rf'C:\Users\nguye\Documents\WORKSPACE\GR Verification {sap}.xlsx'
+                        path : str =rf"\\AWASE1HCMICAP01\AppsData\GR Ver Report\May 2025\GR Verification {sap}.xlsx"
+                        path_copy = rf'C:\Users\{current_user}\Documents\GR Verification {sap}.xlsx'
                         shutil.copy(path, path_copy)
                         list_path.append(path_copy) 
         except Exception as error:
@@ -112,14 +122,18 @@ def copy_file_from_net(list_sap)->list:
         
 
 def  load_data_with_key(path,password) -> None:
-        with open(path,mode='rb') as file:
-                file_encrytp = ms.OfficeFile(file)
-                file_encrytp.load_key(password)
-                file_decrypted = io.BytesIO()
-                file_encrytp.decrypt(file_decrypted)
-                data : pd.DataFrame = pd.read_excel(file_decrypted)
+        try:
+                with open(path,mode='rb') as file:
+                        file_encrytp = ms.OfficeFile(file)
+                        file_encrytp.load_key(password)
+                        file_decrypted = io.BytesIO()
+                        file_encrytp.decrypt(file_decrypted)
+                        data : pd.DataFrame = pd.read_excel(file_decrypted)
+                        df_list.append(data)
+        except Exception as error:
+                data : pd.DataFrame  = pd.read_excel(path)
                 df_list.append(data)
-        
+                
 
 
 
@@ -141,15 +155,14 @@ def filter_df(data:pd.DataFrame,start_time:datetime,end_time:datetime,callback)-
         mask : pd.Series = ((date_col >= start_time) & (date_col <= end_time) & (bool_col.iloc[:,9:].all(axis=1)))
         return callback(data[mask])
 
-
 def unique_data(data: pd.DataFrame)-> pd.DataFrame:
         data_unique : pd.Series = data.duplicated(subset=data.columns[0],keep='first')
         return data[~data_unique]
 
 
 def clear_sheet_data(file_path:str)-> None:
-        app = xw.App(visible=True, add_book=False)
-        wb = app.books.open(file_path, update_links=False)
+        
+        wb = xw.Book(file_path,update_links=False)
         sheet = wb.sheets["Verify data"]
         last_row = sheet.range("A" + str((sheet.cells.last_cell).row)).end('up').row
         if last_row > 2:
@@ -206,6 +219,7 @@ def process() ->None:
         print(term.center("----->   Nhập 1 để chọn ca ngày   <-----"))
         print(term.center("----->   Nhập 2 để chọn ca đêm    <-----"))
         user_input = input()
+        os.system('cls')
         if user_input !='':
                 if user_input =='1':
                         sap_list : list = get_list_sap()
@@ -234,7 +248,6 @@ def process() ->None:
                         is_event.set()
                         
                         
-                        
                 elif user_input =='2':
                         sap_list : list = get_list_sap()
                         progress = progress + 10
@@ -260,18 +273,21 @@ def process() ->None:
                         progress = progress + 20
                         done.set()
                         is_event.set()
-                
+                        
         else : return
 
 
 def main()->None:
-
+        global progress
         task_1= th.Thread(target=print_loading)
-        task_2 = th.Thread(target=process)
         task_1.start()
-        task_2.start()
-        task_2.join()
+        start = time.time()
+        process()
         task_1.join()
+        print('\n'*5)
+        print(f'\nTotal for all process is {time.time()-start}s')
+        is_event.clear()
+        progress = 0
         
 
 while True :
