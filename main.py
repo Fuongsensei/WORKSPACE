@@ -6,50 +6,46 @@ import time
 import os
 from blessed import Terminal
 from file_utils import copy_file_from_net
-
-done = th.Event()
-is_event = th.Event()
-progress = 0
-term = Terminal()
+import constains
 
 def process():
-    global progress
+    
     des_path = get_des_path(change_des_path).strip('"')
-    print(term.center("----->   Nhập 1 để chọn ca ngày   <-----"))
-    print(term.center("----->   Nhập 2 để chọn ca đêm    <-----"))
+    print(constains.term.center("----->   Nhập 1 để chọn ca ngày   <-----"))
+    print(constains.term.center("----->   Nhập 2 để chọn ca đêm    <-----"))
     user_input = input()
     os.system('cls')
     if user_input in ('1', '2'):
         sap_list = get_list_sap()
-        progress += 10; done.set()
+        constains.progress += 10; constains.done.set()
 
         path_list = copy_file_from_net(sap_list)
-        progress += 10; done.set()
+        constains.progress += 10; constains.done.set()
         create_dataframe(path_list, password)
-        progress += 20; done.set()
+        constains.progress += 20; constains.done.set()
         df = concat_df(df_list, resize_dataframe)
-        progress += 20; done.set()
+        constains.progress += 20; constains.done.set()
         shift_df = filter_df(df, day if user_input == '1' else night,in_day if user_input == '1' else day, unique_data)
-        progress += 20; done.set()
+        constains.progress += 20; constains.done.set()
         clear_sheet_data(des_path)
         write_df_to_excel(shift_df, close_excel, des_path)
-        progress += 20; done.set()
-        is_event.set()
+        constains.progress += 20; constains.done.set()
+        constains.is_event.set()
 
 
 print_authors()
 
 
 def main():
-    global progress
-    task_1 = th.Thread(target=print_loading, args=(done, is_event, lambda: progress))
+    
+    task_1 = th.Thread(target=print_loading)
     task_1.start()
     start = time.time()
     process()
     task_1.join()
     print('\n' * 5)
     print(f'\nTotal time: {time.time() - start:.2f}s')
-    is_event.clear(); progress = 0
+    constains.is_event.clear(); constains.progress = 0
 
 if __name__ == "__main__":
     while True:
