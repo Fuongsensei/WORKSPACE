@@ -1,3 +1,4 @@
+#pylint:disable = all
 from ui_console import print_authors, get_des_path, change_des_path, get_list_sap, print_loading
 from excel_handler import clear_sheet_data, write_df_to_excel, close_excel
 from data_utils import create_dataframe, concat_df, resize_dataframe, filter_df, unique_data, df_list, password, day, in_day, night
@@ -11,6 +12,7 @@ import constains
 def process():
     
     des_path = get_des_path(change_des_path).strip('"')
+    print('\n'*4)
     print(constains.term.center("----->   Nhập 1 để chọn ca ngày   <-----"))
     print(constains.term.center("----->   Nhập 2 để chọn ca đêm    <-----"))
     user_input = input()
