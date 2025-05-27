@@ -1,3 +1,4 @@
+#pylint:disable = all
 import sys, os, time, re
 from colorama import init, Fore
 from blessed import Terminal
@@ -56,5 +57,5 @@ def print_loading():
             bar = '█' * i
             sys.stdout.write(f'\rLoading: {bar:░<100} {i}%')
             sys.stdout.flush()
-            time.sleep(0.02)
+            time.sleep(0.03)
         constains.done.clear()

@@ -1,3 +1,5 @@
+#pylint:disable = all
+
 import xlwings as xw
 import psutil
 
@@ -9,7 +11,7 @@ def clear_sheet_data(file_path: str) -> None:
         sheet.api.Rows(f"3:{last_row}").Delete()
     sheet.range('A2:N2').clear()
 
-def write_df_to_excel(data, callback, des_path) -> None:
+def write_df_to_excel(data, callback, des_path:str) -> None:
     try:
         wb = xw.Book(des_path)
         sheet = wb.sheets['Verify data']
