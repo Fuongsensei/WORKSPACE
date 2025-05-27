@@ -24,3 +24,15 @@ def close_excel(app_name: str) -> None:
     for proc in psutil.process_iter():
         if proc.name() == app_name:
             proc.kill()
+
+def call_macro(des_path,user_input):
+    wb = xw.Book(des_path)
+    macros : dict = {
+        '1': wb.macro("Ngay"),
+        '2': wb.macro('DEM')
+    }
+    macros[user_input]()
+    macro_delete = wb.macro("Xoa_Data")
+    macro_run_data = wb.macro('chay_Data')
+    macro_delete()
+    macro_run_data()

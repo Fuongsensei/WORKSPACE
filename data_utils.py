@@ -14,17 +14,17 @@ in_day : datetime = day.replace(hour=23,minute=59,second=59)
 night : datetime = (day - timedelta(days=1)).replace(hour=18,minute=0,second=0)
 
 def load_data_with_key(path, password):
-    try:
-        with open(path, 'rb') as file:
-            office_file = msoffcrypto.OfficeFile(file)
-            office_file.load_key(password)
-            decrypted = io.BytesIO()
-            office_file.decrypt(decrypted)
-            df : pd.DataFrame = pd.read_excel(decrypted)
-            df_list.append(df)
-    except Exception:
-        df = pd.read_excel(path)
-        df_list.append(df)
+        try:
+                with open(path, 'rb') as file:
+                        office_file = msoffcrypto.OfficeFile(file)
+                        office_file.load_key(password)
+                        decrypted = io.BytesIO()
+                        office_file.decrypt(decrypted)
+                        df : pd.DataFrame = pd.read_excel(decrypted)
+                        df_list.append(df)
+        except Exception:
+                df = pd.read_excel(path)
+                df_list.append(df)
 
 def create_dataframe(dercrypt,list_file_path : list )-> None:
         threads : list[th.Thread] = []
@@ -33,7 +33,7 @@ def create_dataframe(dercrypt,list_file_path : list )-> None:
                 task.start()
                 threads.append(task)
                 
-        for i in threads : 
+        for i in threads: 
                 i.join()
 
 def concat_df(list_data:list[pd.DataFrame],callback) -> pd.DataFrame:
