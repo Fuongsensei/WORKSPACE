@@ -60,7 +60,8 @@ def print_loading():
             sys.stdout.flush()
             time.sleep(0.03)
         constains.done.clear()
+    print('\n' * 10)
 
-def ask_user() ->bool:
-    user_input : str = input(f"\nDỮ LIÊU ĐÃ ĐƯỢC GHI THÀNH CÔNG BẠN CÓ MUỐN CHẠY DATA ? [{apply_color('Y')}/'N]")
+def ask_user(question) ->bool:
+    user_input : str = input(f"\n {question} ? [{apply_color('Y')}/'N]:     ")
     return True if user_input.upper() != 'N' else False
